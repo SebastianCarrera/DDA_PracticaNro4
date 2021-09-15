@@ -1,0 +1,63 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="EjercicioPropuesto.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang ="es">
+    <script languaje="C#" runat="server">
+        void Pulsado(Object sender, EventArgs args)
+        {
+            etiqueta.InnerText = lista.Value;
+        }
+        void CambiarColor(Object sender, EventArgs argumentos)
+        {
+            cuerpo.Style["background-color"] = Lista4.Value;        }
+        void Pulsado2(Object sender, EventArgs argumentos)
+        {
+            DateTime ahora;
+            ahora = DateTime.Now;
+            etiqueta3.Text = "El momento es: " + ahora.ToString();
+        }
+    </script>
+    <head runat="server">
+        <title><%: Page.Title %> - ELECTRODOMESTICOS</title>
+    </head>
+    <body id ="cuerpo" runat="server">
+        <form id="WebForm" method="post" runat="server">
+            <div>
+                <h1>Datos de Electrodomesticos</h1>
+                Elija: &nbsp;
+                <select id="lista" runat="server">
+                    <option selected>Microonda</option>
+                    <option>Refrigerador</option>
+                    <option>Tostadora</option>
+                    <option>Campana extractora</option>
+                    <option>Aspiradora</option>
+                </select>
+                <br/><br/>
+                <input type="button" id="boton" runat="server" value="Aceptar" OnServerClick ="Mostrar_ServerClick" />
+                <br/><br/>
+                <div id="etiqueta" runat="server"></div>
+                <div style="font-weight:bold" id="Resultado" runat="server"></div>
+                <br/><br/>
+                <select id="Lista4" name="lista4" runat="server">
+                    <option value="red" selected>rojo</option>
+                    <option value="gray">gris</option>
+                    <option value="blue">azul</option>
+                    <option value="pink">rosa</option>
+                    <option value="green">verde</option>
+                    <option value="yellow">amarillo</option>
+                </select>
+                <br/><br/>
+                <input type="button" runat="server" id="Button1" value="Cambia" onserverclick="CambiarColor"/>
+                <br/><br/>
+                <asp:button id="Button5" onClick="Pulsado2" runat="server" Text="Hora" /> <br />
+                <asp:Label ID="etiqueta3" runat="server" />
+                <br/><br/>
+                <input type="submit" id="MostrarGrafico" runat="server" value="Mostrar Figura" OnServerClick ="MostrarGrafico_ServerClick" />
+                <br/><br/>
+                <img id="Grafico" runat="server" />
+                <br/><br/>
+            </div>
+        </form>
+    </body>
+</html>
+
